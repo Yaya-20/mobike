@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* ul{
+            list-style: none;
+            margin: auto;
+            width: 200px;
+        }
+        ul li{
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+
+        } */
+        /* ul li:nth-child(even){
+            background-color: #ddd;
+        } */
+        .box{
+            width: 400px;
+            margin: 30px auto;
+        }
+        .box ul{
+            margin-bottom: -1px;
+        }
+        .box ul li{
+            list-style: none;
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            color: #ddd;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        .box ul li.active{
+            color: #000;
+            border-bottom-color: #fff;
+        }
+        .box div{
+            display: none;
+            line-height: 200px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        .box div.active{
+            display: block;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- <ul>
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <li>第6个li</li>
+        <li>第7个li</li>
+        <li>第8个li</li>
+        <li>第9个li</li>
+        <li>第10个li</li>
+        <li>第11个li</li>
+        <li>第12个li</li>
+        <li>第13个li</li>
+        <li>第14个li</li>
+        <li>第15个li</li>
+    </ul> -->
+    <div class="box">
+        <ul>
+            <li class="active">动画</li>
+            <li>电影</li>
+            <li>小说</li>
+        </ul>
+        <div class="active">啊啊啊</div>
+        <div>斑斑驳驳</div>
+        <div>是生生世世</div>
+    </div>
+    <script>
+        // var oUl = document.getElementsByTagName("ul")[0];
+        // var list = oUl.getElementsByTagName("li");
+        // // for(var i = 0; i < list.length; i++){
+        // //     // if(i % 2 !== 0){
+        // //     //     list[i].style.backgroundColor = "red";
+        // //     // }
+
+            
+
+        // // }
+
+        // var arr = ["red","yellow","blue"]
+        // for(var i = 0; i < list.length; i++){
+        //     var num = i % arr.length;
+        //     switch(num){
+        //         case 0:
+        //             list[i].style.backgroundColor = arr[num];
+        //             break;
+        //         case 1:
+        //             list[i].style.backgroundColor = arr[num];
+        //             break;
+        //         default:
+        //             list[i].style.backgroundColor = arr[num];
+        //     }
+        // }
+        var oBox = document.getElementsByClassName("box")[0];
+        var aLi = oBox.getElementsByTagName("li");
+        var aDiv = oBox.getElementsByTagName("div");
+        for(var i = 0; i < aLi.length; i++){
+            // aLi[i].index = i;
+            // aLi[i].onclick = function(){
+            //     for(var i = 0; i < aLi.length; i++){
+            //         aLi[i].className = "";
+            //         aDiv[i].className = "";
+            //     }
+            //     changeTab(this.index);
+            // }
+
+            // (function(i){
+            //     aLi[i].onclick = function(){
+            //         for(var j = 0; j < aLi.length; j++){
+            //         aLi[j].className = "";
+            //         aDiv[j].className = "";
+
+            //         }
+            //         changeTab(i);
+            //     }
+            // })(i);
+            aLi[i].onclick = (function(i){
+                return function(){
+                    for(var j = 0; j < aLi.length; j++){
+                    aLi[j].className = "";
+                    aDiv[j].className = "";
+
+                    }
+                    changeTab(i);
+                }
+            })(i)
+           
+        }
+        function changeTab(n){
+            aLi[n].className = "active";
+            aDiv[n].className = "active";
+
+        }
+
+        function sum(n) {
+          if(n === 0) return 0;
+          return n + sum(n-1);
+        }
+    </script>
+</body>
+</html>
